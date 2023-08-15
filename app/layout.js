@@ -6,6 +6,8 @@ export const metadata = {
 		'Building a League Of Legends course to get people to play better',
 };
 
+export const dynamic = 'force-dynamic';
+
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
