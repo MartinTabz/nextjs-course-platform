@@ -9,7 +9,7 @@ export default async function ProductsPage() {
 		data: { session },
 	} = await supabase.auth.getSession();
 
-	if (!session.user.id) {
+	if (!session?.user?.id) {
 		redirect('/signin');
 	}
 
