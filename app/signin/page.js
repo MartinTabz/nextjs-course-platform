@@ -11,7 +11,7 @@ export default function SigninPage() {
 		await supabase.auth.signInWithOAuth({
 			provider: 'discord',
 			options: {
-				redirectTo: 'http://localhost:3000/auth/callback',
+				redirectTo: `${process.env.NEXT_PUBLIC_DOMAIN}/auth/callback`,
 			},
 		});
 		router.refresh();

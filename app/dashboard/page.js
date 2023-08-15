@@ -8,17 +8,20 @@ export default async function DashboardPage() {
 		data: { session },
 	} = await supabase.auth.getSession();
 
-	if (!session.user.id) {
-	}
+	var profile;
 
-	const { data: profile, error } = await supabase
-		.from('profile')
-		.select('*')
-		.eq('id', session.user.id)
-      .single();
+	if (session?.user?.id) {
+		const { data, error } = await supabase
+			.from('profile')
+			.select('*')
+			.eq('id', session.user.id)
+			.single();
 
-	if (error) {
-		throw new Error(error.message);
+		if (error) {
+			throw new Error(error.message);
+		} else {
+			profile = data;
+		}
 	}
 
 	return (
@@ -27,9 +30,9 @@ export default async function DashboardPage() {
 			{session && (
 				<div>
 					<h2>This is your profile:</h2>
-               <Image src={profile.avatar_url} width={100} height={100} />
-               <h3>{profile.discord_name}</h3>
-               <span>{profile.email}</span>
+					<Image src={profile.avatar_url} width={100} height={100} />
+					<h3>{profile.discord_name}</h3>
+					<span>{profile.email}</span>
 				</div>
 			)}
 		</div>
