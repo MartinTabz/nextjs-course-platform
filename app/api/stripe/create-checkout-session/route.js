@@ -25,10 +25,10 @@ export async function GET(request) {
 
 	if (!product) {
 		const send = {
-			url: null,
+			id: null,
 			error: 'Product price was not passed',
 		};
-		return new Response(JSON.stringify(send), { status: 400 });
+		return new Response(JSON.stringify(send));
 	}
 
 	const { data: purchase_exist_data, error: purchase_exist_error } =
@@ -43,13 +43,14 @@ export async function GET(request) {
 			id: null,
 			error: 'Something went wrong while querying data about existing purchase',
 		};
-		return new Response(JSON.stringify(send), { status: 400 });
-	} else if (purchase_exist_data || purchase_exist_data.length <= 1) {
+		return new Response(JSON.stringify(send));
+	} else if (purchase_exist_data.length > 0) {
+		console.log(purchase_exist_data.length);
 		const send = {
 			id: null,
 			error: 'You already bought this product',
 		};
-		return new Response(JSON.stringify(send), { status: 400 });
+		return new Response(JSON.stringify(send));
 	}
 
 	const { data: product_stripe_data, error: product_stripe_error } =
@@ -64,7 +65,7 @@ export async function GET(request) {
 			id: null,
 			error: 'Something went wrong with the product',
 		};
-		return new Response(JSON.stringify(send), { status: 400 });
+		return new Response(JSON.stringify(send));
 	}
 
 	const { data: profile, error: profile_error } = await supabase
@@ -76,9 +77,9 @@ export async function GET(request) {
 	if (!profile.stripe_customer_id || profile_error) {
 		const send = {
 			id: null,
-			error: 'You don not have Stripe Customer linked to your profile',
+			error: 'You do not have Stripe Customer linked to your profile',
 		};
-		return new Response(JSON.stringify(send), { status: 400 });
+		return new Response(JSON.stringify(send));
 	}
 
 	try {

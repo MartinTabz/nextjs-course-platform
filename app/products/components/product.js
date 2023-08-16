@@ -1,13 +1,40 @@
 'use client';
 
-import Image from 'next/image';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
+import Image from 'next/image';
 
 export default function Product({ product }) {
-   const supabase = createClientComponentClient();
+	const handlePurchase = async (productId) => {
+		try {
+			const { data } = await axios.get('/api/stripe/create-checkout-session', {
+				params: {
+					product: productId,
+				},
+			});
+			if (data?.error) {
+				console.log(data.error);
+				return;
+			} else if (!data?.id) {
+				console.log('Something went wrong.');
+				return;
+			}
 
-   const handlePurchase = async () => {}
+			if (data?.id) {
+				const stripe = await loadStripe(
+					process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+				);
+				await stripe.redirectToCheckout({
+					sessionId: data.id,
+				});
+			} else {
+				console.log('Something went wrong.');
+				return;
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	return (
 		<div>
@@ -16,7 +43,13 @@ export default function Product({ product }) {
 			)}
 			<h3>{product.name}</h3>
 			<p>{product.description}</p>
-			<button onClick={handlePurchase}>Buy Now</button>
+			<b>
+				{(product.price / 100).toLocaleString('en-US', {
+					style: 'currency',
+					currency: 'USD',
+				})}
+			</b>
+			<button onClick={() => handlePurchase(product.id)}>Buy Now</button>
 		</div>
 	);
 }
