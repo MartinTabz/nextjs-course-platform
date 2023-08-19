@@ -56,7 +56,7 @@ export async function GET(request) {
 	const { data: product_stripe_data, error: product_stripe_error } =
 		await supabase
 			.from('product')
-			.select('stripe_price')
+			.select('stripe_price, id')
 			.eq('id', product)
 			.single();
 
@@ -97,6 +97,7 @@ export async function GET(request) {
 			customer: profile.stripe_customer_id,
 			metadata: {
 				user_id: session.user.id,
+				product_id: product_stripe_data.id
 			},
 		});
 		if (id) {
