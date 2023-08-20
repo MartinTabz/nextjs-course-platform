@@ -1,6 +1,7 @@
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { notFound, redirect } from 'next/navigation';
+import ChaptersLessons from '@app/learn/[slug]/components/chapters-lessons';
 
 export default async function Page({ params }) {
 	console.log(params);
@@ -63,7 +64,7 @@ export default async function Page({ params }) {
 
 	return (
 		<>
-			<pre>{JSON.stringify(product, null, 2)}</pre>
+			<ChaptersLessons product={product} />
 		</>
 	);
 }
