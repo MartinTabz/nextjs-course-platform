@@ -1,11 +1,9 @@
+import ChaptersLessons from '@app/learn/[slug]/components/chapters-lessons';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { notFound, redirect } from 'next/navigation';
-import ChaptersLessons from '@app/learn/[slug]/components/chapters-lessons';
 
 export default async function Page({ params }) {
-	console.log(params);
-
 	const supabase = createServerComponentClient({ cookies });
 
 	const {
@@ -13,8 +11,7 @@ export default async function Page({ params }) {
 	} = await supabase.auth.getSession();
 
 	if (!session) {
-      console.log('Session not found');
-		notFound();
+		redirect('/signin');
 	}
 
 	const { data: product_exists_data, error: product_exists_error } =
@@ -30,7 +27,6 @@ export default async function Page({ params }) {
 		!product_exists_data?.id ||
 		!product_exists_data?.visible
 	) {
-      console.log('Product does not exist');
 		notFound();
 	}
 

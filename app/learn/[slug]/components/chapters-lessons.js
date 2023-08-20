@@ -45,7 +45,7 @@ export default function ChaptersLessons({ product }) {
 			{chapters.map((chapter) => (
 				<div key={chapter.id}>
 					<div onClick={() => toggleDropdown(chapter.id)}>
-						<span>{chapter.order}</span>
+						<span>{chapter.course_order}</span>
 						<h2>{chapter.name}</h2>
 					</div>
 					{dropdownStates[chapter.id] && (
@@ -59,10 +59,10 @@ export default function ChaptersLessons({ product }) {
 
 									return (
 										<Link
-											href={`/learn/${product.slug}/${chapter.order}.${l.chapter_order}/${l.slug}`}
+											href={`/learn/${product.slug}/${chapter.course_order}.${l.chapter_order}/${l.slug}`}
 											key={l.id}
 										>
-											<span>{`${chapter.order}.${l.chapter_order}`}</span>
+											<span>{`${chapter.course_order}.${l.chapter_order}`}</span>
 											{l.banner_url ? (
 												<Image
 													src={l.banner_url}
