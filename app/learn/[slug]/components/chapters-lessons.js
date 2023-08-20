@@ -30,6 +30,7 @@ export default function ChaptersLessons({ product }) {
 				.from('progress')
 				.select('*')
 				.eq('user', session.user.id);
+         console.log(progress);
 			setProgress(progress);
 		};
 
@@ -53,7 +54,7 @@ export default function ChaptersLessons({ product }) {
 								.sort((a, b) => a.chapter_order - b.chapter_order)
 								.map((l) => {
 									const isViewed = progress.some(
-										(item) => item.lekce === l.id && item.zhlednuto
+										(item) => item.lesson === l.id && item.viewed
 									);
 
 									return (
