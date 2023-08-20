@@ -13,7 +13,10 @@ export default async function ProductsPage() {
 		redirect('/signin');
 	}
 
-	const { data: products, error } = await supabase.from('product').select('*');
+	const { data: products, error } = await supabase
+		.from('product')
+		.select('*')
+		.eq('visible', true);
 
 	if (error) {
 		throw new Error(error.message);
