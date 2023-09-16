@@ -1,0 +1,117 @@
+.section {
+   position: relative;
+   top: 340px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 100%;
+}
+.section_area {
+   position: relative;
+   max-width: 800px;
+   width: 95%;
+}
+.inner_box { 
+   background-image: url(../../public/boxbg.webp);
+   width: 100%;
+   position: relative;
+   display: flex;
+   justify-content: space-between;
+   border-radius: 10px;
+   align-items: center;
+   background-color: aqua;
+   padding-left: 50px;
+   height: 300px;
+   z-index: 3;
+}
+.tag {
+   position: absolute;
+   left: -30px;
+   top: -30px;
+   width: 120px;
+   height: auto
+}
+.text {
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+}
+.text > h2 {
+   font-size: 2.2rem;
+   color: var(--clr-white);
+}
+.text > p {
+   font-size: 1.1rem;
+   color: var(--clr-white-desc);
+}
+.btn {
+   background-color: var(--clr-lol-main);
+   color: var(--clr-white);
+   border: 0;
+   border-radius: 5px;
+   display: flex;
+   gap: 10px;
+   align-items: center;
+   padding: 10px;
+   height: 70px;
+   cursor: pointer;
+   transition: var(--ef-trans);
+}
+.btn > svg {
+   font-size: 2.5rem;
+}
+.btn_text {
+   display: flex;
+   flex-direction: column;
+   font-size: 1.2rem;
+}
+.btn_text > h4 {
+   font-size: 1.3rem;
+}
+.btn_text > h5 {
+   display: flex;
+   gap: 5px;
+   color: var(--clr-white-desc);
+   font-weight: 500;
+   align-items: center;
+}
+.oldprice {
+   color: var(--clr-white);
+   position: relative;
+}
+.outline {
+   background-color: #DB2626;
+   height: 3px;
+   width: 100%;
+   position: absolute;
+   top: 40%;
+}
+.newprice {
+   font-weight: 700;
+   color: var(--clr-white);
+   font-size: 1.3rem;
+}
+.btn:hover {
+   transition: var(--ef-trans);
+   background-color: #38255a;
+}
+.inside_icon {
+   position: relative;
+   height: 150%;
+   left: 20px;
+   width: auto;
+}
+.iconone {
+   position: absolute;
+   left: -200px;
+   z-index: 1;
+   top: 0;
+}
+.icontwo {
+   position: absolute;
+   right: -190px;
+   top: 10px;
+   z-index: 1;
+   width: 300px;
+   height: auto;
+}

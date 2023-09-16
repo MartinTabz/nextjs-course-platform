@@ -1,0 +1,17 @@
+.panel {
+   width: 100%;
+   height: 28px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background-color: #DB2626;
+   color: var(--clr-white);
+   font-family: 'Montserrat', sans-serif;
+   font-weight: 700;
+   font-size: 0.9rem;
+}
+@media only screen and (max-width: 450px) {
+   .panel {
+      font-size: 0.8rem;
+   }
+}
