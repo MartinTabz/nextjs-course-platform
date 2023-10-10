@@ -1,0 +1,51 @@
+.section {
+   background-color: var(--clr-lol-main);
+   width: 100%;
+   height: 220px;
+   display: flex;
+   justify-content: center;
+}
+.area {
+   display: flex;
+   width: var(--vp-width);
+   max-width: var(--vp-max-width);
+   justify-content: space-between;
+   align-items: center;
+   padding: 0 15px;
+}
+.item {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   gap: 8px;
+   align-items: center;
+}
+.item > span {
+   text-transform: uppercase;
+   font-weight: 600;
+   font-size: 1.25rem;
+}
+.item > svg {
+   font-size: 1.5rem;
+}
+@media only screen and (max-width: 960px) {
+   .item > span {
+      font-size: 1.05rem;
+   }
+   .item > svg {
+      font-size: 1.35rem;
+   }
+}
+@media only screen and (max-width: 960px) {
+   .area {
+      flex-direction: column;
+      gap: 50px;
+   }
+   .section {
+      height: auto;
+      padding: 60px 0;
+   }
+   .item {
+      gap: 3px;
+   }
+}

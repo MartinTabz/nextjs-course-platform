@@ -1,15 +1,13 @@
-import SalePanel from "./components/SalePanel";
-import HeroSection from "./components/HeroSection";
-import Benefits from "./components/Benefits";
-import Box from "./components/Box";
+import Contents from '@components/lol-course/contents';
+import Features from '@components/lol-course/features';
+import Hero from '@components/lol-course/hero';
 
 export default function Page() {
-   return (
-      <main>
-         <SalePanel />
-         <HeroSection />
-         <Box />
-         <Benefits />
-      </main>
-   )
+	return (
+		<main>
+			<Hero />
+			<Features />
+			<Contents />
+		</main>
+	);
 }

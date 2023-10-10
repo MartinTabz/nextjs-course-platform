@@ -32,11 +32,16 @@
 :root {
   --clr-white: #F5F5F7;
   --clr-white-desc: #D2D2D2;
+  --clr-dark: #1B1B1B;
+  --clr-dark-lite: #242424;
   
   --clr-lol-main: #4C3575;
   --clr-lol-main-hover: #38255a;
 
   --ef-trans: 250ms ease-in-out;
+
+  --vp-max-width: 1100px;
+  --vp-width: 95%;
 }
 * {
   padding: 0;

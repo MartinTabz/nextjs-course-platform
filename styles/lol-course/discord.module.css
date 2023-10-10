@@ -1,0 +1,85 @@
+.section {
+	width: 100%;
+	height: auto;
+	display: flex;
+	justify-content: center;
+	position: relative;
+}
+.box {
+	position: relative;
+	z-index: 2;
+	background-color: var(--clr-lol-main);
+	width: var(--vp-width);
+	max-width: var(--vp-max-width);
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	justify-content: space-between;
+	padding: 50px 100px;
+	border-radius: 30px;
+}
+.logo {
+	width: calc(25% - 20px);
+	height: 130px;
+}
+.info {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	width: 75%;
+}
+.info > h3 {
+	font-size: 1.4rem;
+	text-transform: uppercase;
+}
+.info > p {
+	font-size: 1.1rem;
+	color: #d4d4d4;
+}
+.background {
+	background-color: var(--clr-dark);
+	position: absolute;
+	width: 100%;
+	z-index: 1;
+	height: 55%;
+}
+.bonus {
+	position: absolute;
+	width: 200px;
+	height: auto;
+	left: -50px;
+	top: -50px;
+}
+@media only screen and (max-width: 995px) {
+   .info {
+      width: 80%;
+   }
+	.info > h3 {
+		font-size: 1.2rem;
+	}
+	.info > p {
+		font-size: 1rem;
+	}
+	.box {
+		padding: 50px 50px;
+      gap: 15px;
+	}
+   .logo {
+      width: calc(20% - 15px);
+      height: 100px;
+   }
+}
+@media only screen and (max-width: 840px) {
+   .box {
+      flex-direction: column;
+      text-align: center;
+      padding: 30px;
+   }
+   .logo {
+      width: 100%;
+      height: 80px;
+   }
+   .info {
+      width: 100%;
+   }
+}
