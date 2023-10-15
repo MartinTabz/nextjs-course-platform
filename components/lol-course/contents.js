@@ -76,7 +76,7 @@ export default function Contents() {
 				<Image className={style.akali} src={akali} alt="" />
 				<Image className={style.jinx} src={jinx} alt="" />
 			</section>
-			<section className={discord.section}>
+			{/* <section className={discord.section}>
 				<div className={discord.box}>
                <Image className={discord.bonus} src={bonus} alt='' />
 					<FaDiscord className={discord.logo} />
@@ -91,7 +91,7 @@ export default function Contents() {
 					</div>
 				</div>
             <div className={discord.background}></div>
-			</section>
+			</section> */}
 		</>
 	);
 }

@@ -1,0 +1,171 @@
+.section {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	font-family: var(--ft-lol-secondary);
+	overflow: hidden;
+	padding: 70px 0;
+	flex-direction: column;
+	gap: 20px;
+	align-items: center;
+}
+.area {
+	background-color: var(--clr-lol-main);
+	background-image: url('../../public/lol-course/boxbg.webp'); /* The image used */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: var(--vp-width);
+	max-width: 800px;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	position: relative;
+	border-radius: 30px;
+}
+.text {
+	width: 60%;
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+	padding-left: 30px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+.img {
+	position: absolute;
+	right: -5px;
+	width: 42%;
+	height: auto;
+}
+.img > img {
+	width: 110%;
+	height: auto;
+}
+.text > h2 {
+	font-size: 2rem;
+	line-height: 1.8rem;
+	font-family: var(--ft-lol-heading);
+}
+.text > p {
+	font-size: 1.1rem;
+}
+.text > a {
+	display: flex;
+	align-items: center;
+	padding: 15px 40px 15px 15px;
+	background-color: var(--clr-lol-main);
+	color: var(--clr-white);
+	gap: 10px;
+	width: fit-content;
+	transition: var(--ef-trans);
+	border-radius: 5px;
+	font-weight: 700;
+	text-decoration: none;
+}
+.text > a:hover {
+	background-color: var(--clr-lol-main-hover);
+}
+.text > a > svg {
+	font-size: 2rem;
+}
+.bgicon1 {
+	position: absolute;
+	z-index: 1;
+	right: calc(50% + 300px);
+	width: 260px;
+	height: auto;
+}
+.bgicon2 {
+	position: absolute;
+	z-index: 1;
+	left: calc(50% + 300px);
+	width: 260px;
+	height: auto;
+}
+.mobil_cta {
+	display: none;
+}
+@media only screen and (max-width: 1150px) {
+	.bgicon1 {
+		display: none;
+	}
+	.bgicon2 {
+		display: none;
+	}
+}
+@media only screen and (max-width: 750px) {
+	.text {
+		width: 60%;
+	}
+	.img {
+		position: absolute;
+		right: -20px;
+		width: 49%;
+		height: auto;
+	}
+}
+@media only screen and (max-width: 620px) {
+	.text > h2 {
+		font-size: 1.8rem;
+		line-height: 1.7rem;
+		font-family: var(--ft-lol-heading);
+	}
+	.text > p {
+		font-size: 0.95rem;
+	}
+	.text > a {
+		font-size: 0.95rem;
+	}
+}
+@media only screen and (max-width: 550px) {
+	.text > a {
+		display: none;
+	}
+	.text {
+		gap: 12px;
+		padding-left: 20px;
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+	.mobil_cta {
+		display: flex;
+		align-items: center;
+		padding: 20px;
+		background-color: var(--clr-lol-main);
+		color: var(--clr-white);
+		gap: 10px;
+		width: fit-content;
+		transition: var(--ef-trans);
+		border-radius: 10px;
+		font-weight: 700;
+		text-decoration: none;
+	}
+}
+@media only screen and (max-width: 450px) {
+	.text > p {
+		font-size: 0.8rem;
+		line-height: 1rem;
+	}
+	.text > h2 {
+		font-size: 1.5rem;
+		line-height: 1.1rem;
+		font-family: var(--ft-lol-heading);
+	}
+	.text {
+		gap: 8px;
+		padding-left: 15px;
+		width: 68%;
+		padding-top: 25px;
+		padding-bottom: 25px;
+	}
+	.img {
+		position: absolute;
+		right: -35px;
+		width: 49%;
+		height: auto;
+	}
+	.img > img {
+		transform: rotate(10deg);
+	}
+}

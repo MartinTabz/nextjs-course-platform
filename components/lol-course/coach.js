@@ -8,7 +8,7 @@ import { FaTrophy } from 'react-icons/fa6';
 
 export default function Coach() {
 	return (
-		<section id="coach" className={style.section}>
+		<section className={style.section}>
 			<div className={style.area}>
 				<div className={style.heading}>
 					<h2>Course coach</h2>
@@ -36,7 +36,7 @@ export default function Coach() {
 						<FaTrophy />
 						Click to see my achievements
 					</a>
-					<Link className={style.cta} href={'#'}>
+					<Link className={style.cta} href={'#join'}>
 						Learn From DanDan
 					</Link>
 					<Image className={style.blob} src={blob} alt="" />

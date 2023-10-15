@@ -1,0 +1,160 @@
+.container {
+	width: 100%;
+	position: relative;
+}
+.border {
+	width: 100%;
+	top: 5px;
+	position: relative;
+	height: auto;
+}
+.section {
+	background-color: var(--clr-dark);
+	width: 100%;
+	font-family: var(--ft-lol-secondary);
+	display: flex;
+	justify-content: center;
+	padding: 150px 2.5%;
+	position: relative;
+   flex-direction: column;
+   align-items: center;
+   gap: 50px;
+}
+.area {
+	padding: 60px 25px;
+   width: fit-content;
+	border: 1px solid #373737;
+	border-radius: 25px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 35px;
+}
+.top {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	align-items: center;
+	justify-content: center;
+}
+.top > h2 {
+	font-family: var(--ft-lol-heading);
+	font-size: 1.64rem;
+}
+.top > span {
+	font-size: 0.8rem;
+	font-weight: 500;
+	color: #f3f1f1;
+}
+
+.price {
+	text-align: center;
+	font-size: 2.5rem;
+	font-weight: 700;
+}
+.price::before {
+	content: '$';
+	font-weight: 400;
+}
+.items {
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 25px;
+	gap: 15px;
+}
+.item {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 1.05rem;
+	font-weight: 400;
+}
+.item > svg {
+	color: var(--clr-lol-main);
+	font-size: 1.35rem;
+}
+.cta {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	align-items: center;
+	text-align: center;
+}
+.cta > button {
+	width: 100%;
+	background-color: var(--clr-lol-main);
+	border: 0;
+	cursor: pointer;
+	transition: var(--ef-trans);
+	color: var(--clr-white);
+	height: 60px;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 1.4rem;
+	border-radius: 10px;
+	box-shadow: 0 0 25px 5px var(--clr-lol-main);
+}
+.cta > button:hover {
+	background-color: var(--clr-lol-main-hover);
+}
+.cta > span {
+	font-size: 0.7rem;
+	text-transform: uppercase;
+	color: #bfbfbf;
+}
+.or {
+   display: flex;
+   flex-direction: column;
+   gap: 5px;
+   text-align: center;
+}
+.or > span {
+   font-family: var(--ft-lol-heading);
+   font-size: 1.3rem;
+}
+.or > p {
+   font-family: var(--ft-lol-secondary);
+   font-size: 0.9rem;
+}
+@media only screen and (max-width: 415px) {
+	.area {
+		padding: 50px 15px;
+		border: 1px solid #373737;
+		border-radius: 25px;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+	}
+	.items {
+		display: flex;
+		flex-direction: column;
+		padding-bottom: 15px;
+		padding-top: 10px;
+		gap: 15px;
+	}
+	.item {
+		gap: 7px;
+		font-size: 0.85rem;
+	}
+	.item > svg {
+		font-size: 1.2rem;
+	}
+
+	.cta > button {
+		height: 55px;
+		font-size: 1.15rem;
+	}
+	.cta > button:hover {
+		background-color: var(--clr-lol-main-hover);
+	}
+	.cta > span {
+		font-size: 0.6rem;
+	}
+	.price {
+		text-align: center;
+		font-size: 2.2rem;
+		font-weight: 700;
+	}
+}
