@@ -37,33 +37,33 @@
 	font-display: swap;
 }
 :root {
-  --clr-white: #F5F5F7;
-  --clr-white-desc: #D2D2D2;
-  --clr-dark: #1B1B1B;
-  --clr-dark-lite: #242424;
+	--clr-white: #f5f5f7;
+	--clr-white-desc: #d2d2d2;
+	--clr-dark: #1b1b1b;
+	--clr-dark-lite: #242424;
 
+	/* LOL Couse Variables */
+	--ft-lol-heading: 'Lora', sans-serif;
+	--ft-lol-secondary: 'Montserrat', sans-serif;
 
-  /* LOL Couse Variables */
-  --ft-lol-heading: 'Lora', sans-serif;
-  --ft-lol-secondary: 'Montserrat', sans-serif;
-  
-  --clr-lol-main: #4C3575;
-  --clr-lol-main-hover: #38255a;
+	--clr-lol-main: #4c3575;
+	--clr-lol-main-hover: #38255a;
 
-  --ef-trans: 250ms ease-in-out;
+	--ef-trans: 250ms ease-in-out;
 
-  --vp-max-width: 1100px;
-  --vp-width: 95%;
+	--vp-max-width: 1100px;
+	--vp-width: 95%;
 }
 * {
-  padding: 0;
-  margin: 0;
-  scroll-behavior: smooth;
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+	padding: 0;
+	margin: 0;
+	scroll-behavior: smooth;
+	box-sizing: border-box;
+	font-family: 'Montserrat', sans-serif;
 }
 body {
-  color: var(--clr-white);
+	background-color: var(--clr-dark);
+	color: var(--clr-white);
 }
 .lol-cta {
 	background-color: transparent;

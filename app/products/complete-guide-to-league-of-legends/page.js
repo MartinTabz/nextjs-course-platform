@@ -12,7 +12,7 @@ import Why from '@components/lol-course/why';
 export default function Page() {
 	return (
 		<>
-			<main>
+			<main style={{ backgroundColor: 'var(--clr-white)'}}>
 				<Hero />
 				<Why />
 				<How />

@@ -10,7 +10,7 @@ export async function GET(request) {
 		data: { session },
 	} = await supabase.auth.getSession();
 
-	if (!session) {
+	if (!session.user.id) {
 		const send = {
 			id: null,
 			error: 'You are not authorized to call this API',
@@ -90,12 +90,12 @@ export async function GET(request) {
 				},
 			],
 			mode: 'payment',
-			success_url: `${process.env.NEXT_PUBLIC_DOMAIN}/products/payment-success`,
-			cancel_url: `${process.env.NEXT_PUBLIC_DOMAIN}/products/payment-failed`,
+			success_url: `${process.env.NEXT_PUBLIC_DOMAIN}/order/succeeded`,
+			cancel_url: `${process.env.NEXT_PUBLIC_DOMAIN}/order/failed`,
 			customer: profile.stripe_customer_id,
 			metadata: {
 				user_id: session.user.id,
-				product_id: product_stripe_data.id
+				product_id: product_stripe_data.id,
 			},
 		});
 		if (id) {

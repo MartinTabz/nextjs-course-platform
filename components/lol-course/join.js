@@ -75,7 +75,12 @@ export default function Join() {
 					},
 				});
 			} else {
-				console.log('Otevřít buy session');
+				await supabase.auth.signInWithOAuth({
+					provider: 'discord',
+					options: {
+						redirectTo: `${process.env.NEXT_PUBLIC_DOMAIN}/auth/ordercallback?p=${product.id}`,
+					},
+				});
 			}
 		}
 	};
