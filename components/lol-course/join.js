@@ -83,20 +83,21 @@ export default function Join() {
 	return (
 		<div className={style.container}>
 			<svg
-				className={style.border}
 				width="1440"
-				height="73"
-				viewBox="0 0 1440 73"
+				height="113"
+				className={style.border}
+				viewBox="0 0 1440 113"
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
 			>
 				<path
 					d="M0 0L720 73L1440 0V73H0V0Z"
 					fill="var(--clr-dark)"
-					fillOpacity="0.7"
+					fillOpacity="0.4"
 				/>
-				<path d="M0 27L720 73L1440 27V73H0V27Z" fill="var(--clr-dark)" />
+				<path d="M0 27L720 73L1440 27V112.5H0V27Z" fill="var(--clr-dark)" />
 			</svg>
+
 			<section id="join" className={style.section}>
 				<div className={style.area}>
 					<div className={style.top}>
