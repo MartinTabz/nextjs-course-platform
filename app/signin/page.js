@@ -1,7 +1,9 @@
 'use client';
 
+import style from '@styles/signin.module.css';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useRouter } from 'next/navigation';
+import { BsDiscord } from 'react-icons/bs';
 
 export default function SigninPage() {
 	const supabase = createClientComponentClient();
@@ -14,13 +16,14 @@ export default function SigninPage() {
 				redirectTo: `${process.env.NEXT_PUBLIC_DOMAIN}/auth/callback`,
 			},
 		});
-		router.refresh();
 	};
 
 	return (
-		<div>
-			<h1>Sign In</h1>
-			<button onClick={handleSignIn}>Sign In with Discord</button>
-		</div>
+		<section className={style.section}>
+			<button className={style.btn} onClick={handleSignIn}>
+				<BsDiscord />
+				Sign In with Discord
+			</button>
+		</section>
 	);
 }
