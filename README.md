@@ -16,9 +16,10 @@ First clone this repository, and in the root folder run:
 ```bash
   npm install
 ```
-    
+
+- Duplicate the .env.example file in root folder and rename it to .env.local
 - Create new Supabase instance and save url, anon and service API key to .env.local file
-- In Authentication tab turn on Discord OAuth and insert Client ID + secret + Turn of Email provider
+- In Authentication tab turn on Discord OAuth and insert Client ID + Secret, also turn off Email provider.
 - In Supabase SQL editor make all of the needed tables and webhook using [this file](https://github.com/MartinTabz/nextjs-course-platform/blob/main/supabase-definition.txt)
 - Create new Stripe account - save both API keys to .env.local file and create a webhook for "checkout.session.completed" action.
 - To generate your own API_ROUTE_SECRET for API route used to create new Stripe customer simply open command prompt and paste this:
