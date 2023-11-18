@@ -17,24 +17,23 @@ First clone this repository, and in the root folder run:
   npm install
 ```
 
-- Duplicate the .env.example file in root folder and rename it to .env.local
-- Create new Supabase instance and save url, anon and service API key to .env.local file
-- In Authentication tab turn on Discord OAuth and insert Client ID + Secret, also turn off Email provider.
+- Duplicate the `.env.example` file in root folder and rename it to `.env.local`
+- Create new Supabase instance and save `url`, `anon` and `service` API key to `.env.local` file
+- In Authentication tab turn on Discord OAuth and insert `Client ID` + `Client Secret`, also turn off `Email provider`.
 - In Supabase SQL editor make all of the needed tables and webhook using [this file](https://github.com/MartinTabz/nextjs-course-platform/blob/main/supabase-definition.txt)
-- Create new Stripe account - save both API keys to .env.local file and create a webhook for "checkout.session.completed" action.
-- To generate your own API_ROUTE_SECRET for API route used to create new Stripe customer simply open command prompt and paste this:
+- Create new Stripe account - save both API keys to `.env.local` file and create a webhook for `checkout.session.completed` action.
+- To generate your own `API_ROUTE_SECRET` for API route used to create new Stripe customer simply open command prompt and paste this:
 ```bash
   node -e "console.log(crypto.randomBytes(32).toString('hex'))"
 ```
-- Now go to [Mux](https://www.mux.com/) and sign up, add your credit/debit card and in settings generate new Signing Key and Access Token and paste them into .env.local.
-- Now fill up the database with products, chapters and lessons. Lessons can have one video and rich text in them. To add video - upload the video to Mux with "playback_policy" set to "signed" to protect the video from unauthorized access and then paste playback ID to playback_id column in the lessons table. 
+- Now go to [Mux](https://www.mux.com/) and sign up, add your credit/debit card and in settings generate new `Signing Key` and `Access Token` and paste them into `.env.local`.
+- Now fill up the database with products, chapters and lessons. Lessons can have one video and rich text in them. To add video - upload the video to Mux with `playback_policy` set to `signed` to protect the video from unauthorized access and then paste playback ID to `playback_id` column in the lessons table. 
 
 
 
+## Starting the project
 
-## Getting Started
-
-First, run the development server:
+To run the development server:
 
 ```bash
 npm run dev
