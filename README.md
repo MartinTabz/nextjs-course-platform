@@ -26,6 +26,7 @@ First clone this repository, and in the root folder run:
 ```bash
   node -e "console.log(crypto.randomBytes(32).toString('hex'))"
 ```
+- After you create your own `API_ROUTE_SECRET` replace my default with your newly made one. Go to Supabase dashboard and under Database tab select Webhooks - click on edit `get_stripe_customer` and replace it down in parameters.
 - Now go to [Mux](https://www.mux.com/) and sign up, add your credit/debit card and in settings generate new `Signing Key` and `Access Token` and paste them into `.env.local`.
 - Now fill up the database with products, chapters and lessons. Lessons can have one video and rich text in them. To add video - upload the video to Mux with `playback_policy` set to `signed` to protect the video from unauthorized access and then paste playback ID to `playback_id` column in the lessons table. 
 
