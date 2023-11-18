@@ -1,4 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NextJS Course Platform
+
+This project consists of:
+- Supabase database and authentication
+- Authentication with Discord OAuth
+- One time fees (+Pre-order logic) using Stripe
+- Multiple courses divided to chapters with lessons 
+- Protected videos using Mux with JWT tokens
+
+## How to run this project
+
+Running this project is quite complicated thing. 
+
+First clone this repository, and in the root folder run:
+
+```bash
+  npm install
+```
+    
+- Create new Supabase instance and save url, anon and service API key to .env.local file
+- In Authentication tab turn on Discord OAuth and insert Client ID + secret + Turn of Email provider
+- In Supabase SQL editor make all of the needed tables and webhook using [this file](https://github.com/MartinTabz/nextjs-course-platform/blob/main/supabase-definition.txt)
+- Create new Stripe account - save both API keys to .env.local file and create a webhook for "checkout.session.completed" action.
+- To generate your own API_ROUTE_SECRET for API route used to create new Stripe customer simply open command prompt and paste this:
+```bash
+  node -e "console.log(crypto.randomBytes(32).toString('hex'))"
+```
+- Now go to [Mux](https://www.mux.com/) and sign up, add your credit/debit card and in settings generate new Signing Key and Access Token and paste them into .env.local.
+- Now fill up the database with products, chapters and lessons. Lessons can have one video and rich text in them. To add video - upload the video to Mux with "playback_policy" set to "signed" to protect the video from unauthorized access and then paste playback ID to playback_id column in the lessons table. 
+
+
+
 
 ## Getting Started
 
@@ -11,12 +42,6 @@ yarn dev
 # or
 pnpm dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
 ## Learn More
 
