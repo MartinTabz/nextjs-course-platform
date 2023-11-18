@@ -1,0 +1,126 @@
+==========# Tabulka: chapter	#==========
+create table
+  public.chapter (
+    id uuid not null default gen_random_uuid (),
+    created_at timestamp with time zone not null default now(),
+    product uuid not null,
+    name text not null default ''::text,
+    slug text not null default ''::text,
+    course_order bigint not null,
+    description text null default ''::text,
+    constraint chapter_pkey primary key (id),
+    constraint chapter_product_fkey foreign key (product) references product (id) on delete restrict
+  ) tablespace pg_default;
+
+
+
+==========# Tabulka: lesson	#==========
+create table
+  public.lesson (
+    id uuid not null default gen_random_uuid (),
+    created_at timestamp with time zone not null default now(),
+    chapter uuid not null,
+    name text not null default ''::text,
+    chapter_order bigint not null,
+    content text null default ''::text,
+    playback_id text null default ''::text,
+    description text null default ''::text,
+    slug text not null default ''::text,
+    banner_url text null,
+    constraint lesson_pkey primary key (id),
+    constraint lesson_chapter_fkey foreign key (chapter) references chapter (id) on delete restrict
+  ) tablespace pg_default;
+
+
+
+==========# Tabulka: preorder	#==========
+create table
+  public.preorder (
+    id uuid not null default gen_random_uuid (),
+    preordered_at timestamp with time zone not null default now(),
+    product uuid not null,
+    "user" uuid not null,
+    constraint preorder_pkey primary key (id),
+    constraint preorder_product_fkey foreign key (product) references product (id) on delete restrict,
+    constraint preorder_user_fkey foreign key ("user") references profile (id) on delete restrict
+  ) tablespace pg_default;
+
+
+
+==========# Tabulka: product	#==========
+create table
+  public.product (
+    id uuid not null default gen_random_uuid (),
+    created_at timestamp with time zone not null default now(),
+    stripe_price text not null,
+    price bigint not null,
+    name text null,
+    description text null,
+    banner_url text null,
+    visible boolean not null default false,
+    slug text not null default ''::text,
+    preorder boolean not null default true,
+    landingpage_slug text not null,
+    constraint product_pkey primary key (id),
+    constraint product_landingpage_slug_key unique (landingpage_slug),
+    constraint product_slug_key unique (slug),
+    constraint product_stripe_price_key unique (stripe_price)
+  ) tablespace pg_default;
+
+
+
+==========# Tabulka: profile	#==========
+create table
+  public.profile (
+    id uuid not null,
+    created_at timestamp with time zone not null default now(),
+    email text null,
+    discord_id text null,
+    discord_name text null,
+    avatar_url text null,
+    stripe_customer_id text null,
+    constraint profile_pkey primary key (id),
+    constraint profile_discord_id_key unique (discord_id),
+    constraint profile_email_key unique (email),
+    constraint profile_stripe_customer_id_key unique (stripe_customer_id),
+    constraint profile_id_fkey foreign key (id) references auth.users (id) on delete restrict
+  ) tablespace pg_default;
+
+create trigger get_stripe_customer
+after insert on profile for each row
+execute function supabase_functions.http_request (
+  'https://lol-course.vercel.app/api/stripe/create-new-customer',
+  'POST',
+  '{"Content-type":"application/json"}',
+  '{"API_ROUTE_SECRET":"82c38016b9dc150c28a1f7025f403cef4cb41419eb1ff604c222b6cbca0e640b"}',
+  '1000'
+);
+
+
+
+==========# Tabulka: progress	#==========
+create table
+  public.progress (
+    id uuid not null default gen_random_uuid (),
+    viewed_at timestamp with time zone not null default now(),
+    "user" uuid not null,
+    lesson uuid not null,
+    viewed boolean not null default true,
+    constraint progress_pkey primary key (id),
+    constraint progress_lesson_fkey foreign key (lesson) references lesson (id) on delete cascade,
+    constraint progress_user_fkey foreign key ("user") references profile (id) on delete cascade
+  ) tablespace pg_default;
+
+
+
+==========# Tabulka: purchase	#==========
+create table
+  public.purchase (
+    id uuid not null default gen_random_uuid (),
+    bought_at timestamp with time zone not null default now(),
+    "user" uuid not null,
+    product uuid not null,
+    constraint purchase_pkey primary key (id),
+    constraint purchase_product_fkey foreign key (product) references product (id) on delete restrict,
+    constraint purchase_user_fkey foreign key ("user") references profile (id) on delete restrict
+  ) tablespace pg_default;
